@@ -13,11 +13,33 @@ import pandas as pd
 import getopt
 import xlsxwriter
 import os
+import sys
 
+def usage():
+    #TODO: Add usage output here
+    pass
 
+def read_file(file_name):
+    pass
 
 def main():
-    pass
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], 'f:hu', ['help', 'file='])
+    except getopt.GetoptError as err:
+        print(str(err))
+        usage()
+        sys.exit(2)
+    for o, a in opts:
+        if o in ('-f', '--file'):
+            print('file option select')
+            read_file(a)
+        if o in ('-h', '--help'):
+            usage()
+            sys.exit(2)
+        print('o: ', o)
+        print('a: ', a)
+    for arg in args:
+        print('arg: ', arg)
     '''
     Steps
     1. Add opt step for CLI processing
